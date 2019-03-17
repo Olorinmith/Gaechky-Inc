@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="stol2.css">
+  </head>
+  <body>
+    <div class="page">
+      <div class="stols">
+        <a href="stol1.html" id=""><button type="button" name="Столовая 1" class="stol1"></button></a>
+        <a href="stol2.html"><button type="button" name="Столовая 2" class="stol2"></button></a>
+      </div>
+
+      <div class="eda_napitki">
+        <p><button onclick="replaceImages()">Заменить</button></p>
+      </div>
+      </div>
+
+      <script>
+      var req = new XMLHttpRequest();
+      req.open("GET", "data.txt", true);
+      req.addEventListener("load",
+        () =>
+        {
+          console.log(`Done: ${req.status}\n${req.responseText}`);
+        });
+      req.send(null);
+      </script>
+
+  </body>
+</html>
