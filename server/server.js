@@ -24,12 +24,12 @@ function read_file(path)
 {
   return new Promise
   (
-    (resolve) =>
+    (resolve, reject) =>
     {
-        fs.readFile('.' + path,
+        fs.readFile(path,
         (err, data) =>
         {
-          if (err) throw err;
+          if (err) reject(err);
           console.log(`3 - ${typeof data}`);
           resolve(data);
         });
@@ -44,6 +44,7 @@ function type_of_file(path)
     case "html":
     case "htm": type = "text/html; charset=UTF-8"; break;
     case "js": type = "application/Ja­va­Script;charset=UTF-8"; break;
+    case "json": type = "application/json; charset=UTF-8"; break;
     case "css": type = "text/css; charset=UTF-8"; break;
     case "txt" : type = "text/plain; charset=UTF-8"; break;
     case "jpg" : type = "image/jpeg"; break;
@@ -57,23 +58,37 @@ function type_of_file(path)
 
 app.use(
   async ctx =>
-{
-  var path = ctx.request.path;
-
-  if(path === '/')
   {
-    ctx.body = fs.readFileSync('stol2.html', 'utf8');
-  }
-  else
-  {
-    console.log(`2 - .${path}`);
-    var data_b = await read_file(path);
-    console.log(`4 - ${typeof data_b}`);
+    var path = ctx.request.path;
 
-    ctx.type = type_of_file(path);
-    ctx.body = data_b;
-    console.log(`5 - ${ctx.type}`);
-  }
+    if(path === '/main' || path === '/')
+    {
+      ctx.type = 'text/html; charset=UTF-8';
+      try
+      {
+        ctx.body = await read_file('file_path/stolovaya.html');
+      }
+      catch (e)
+      {
+        ctx.body = await read_file('file_path/404Error.html');
+      }
+    }
+    else
+    {
+      console.log(`2 - ${path}`);
+      try
+      {
+        var data_b = await read_file('file_path' + path);
+        console.log(`4 - ${typeof data_b}`);
+        ctx.type = type_of_file(path);
+        ctx.body = data_b;
+        console.log(`5 - ${ctx.type}`);
+      }
+      catch(e)
+      {
+        console.error(e);
+      }
+    }
 });
 
 app.listen(3000);

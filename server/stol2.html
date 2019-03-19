@@ -7,17 +7,37 @@
   </head>
   <body>
     <div class="page">
+
       <div class="stols">
         <a href="stol1.html" id=""><button type="button" name="Столовая 1" class="stol1"></button></a>
         <a href="stol2.html"><button type="button" name="Столовая 2" class="stol2"></button></a>
       </div>
 
       <div class="eda_napitki">
-        <p><button onclick="replaceImages()">Заменить</button></p>
+        <p>Логин: <input	type="text" value=""></p>
+        <p>Пароль: <input	type="password" valuse=""></p>
+        <button	type="submit">Войти</button>
       </div>
       </div>
 
       <script>
+      var	form	=	document.getElementsByClassName("eda_napitki")[0];
+      console.log(form);
+      var button = form.getElementsByTagName("button")[0];
+      console.log(button);
+      setTimeout(
+        () =>
+        console.log(form.getElementsByTagName("p")[0].getElementsByTagName("input")[0].value), 5000);
+      console.log(form.getElementsByTagName("p")[1].value);
+
+      button.addEventListener('click',
+        (event)=>
+        {
+          	console.log(form.getElementsByTagName("p")[0].getElementsByTagName("input")[0].value);
+            console.log(form.getElementsByTagName("p")[1].getElementsByTagName("input")[0].value);
+          	event.preventDefault();
+        });
+
       var req = new XMLHttpRequest();
       req.open("GET", "data.txt", true);
       req.addEventListener("load",
@@ -26,6 +46,21 @@
           console.log(`Done: ${req.status}\n${req.responseText}`);
         });
       req.send(null);
+
+      function openStol(evt, stolNum)
+      {
+        var i, buttonStolContent, buttonStolLink;
+        buttonStolContent = document.getElementsByClassName("buttonStolContent");
+        for (var i = 0; i < buttonStolContent.length; i++)
+          buttonStolContent[i].style.display = "none";
+
+        buttonStolLink = document.getElementsByClassName("buttonStolLink");
+        for (var i = 0; i < buttonStolLink.length; i++)
+          buttonStolLink[i].className = buttonStolLink[i].className.replace("active","");
+
+        document.getElemetById(stolNum).style.display = "block";
+        event.currentTarget.className += "active";
+      }
       </script>
 
   </body>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="page.css">
+    <title></title>
+  </head>
+  <body>
+
+    <div class="stols">
+        <button class="buttonStolLink" onclick="openStol(event,'Stol1')">Столовая 1</button>
+        <button class="buttonStolLink" onclick="openStol(event,'Stol2')">Столовая 2</button>
+        <button class="buttonStolLink" onclick="openStol(event,'Stol3')">Столовая 3</button>
+    </div>
+
+      <div id="Stol1" class="buttonStolContent">
+        <div class="menu">
+          <div class="eda_drinks">
+            <button class="buttonEdaLink" onclick="openEda(event,'Eda')">Еда</button>
+          </div>
+          <div id="Eda" class="buttonEdaContent">
+            Еда 1<br>
+            Еда 2
+          </div>
+        </div>
+      </div>
+      <div id="Stol2" class="buttonStolContent">
+      <div class="menu">
+
+      </div>
+      <div id="Stol3" class="buttonStolContent">
+      <div class="menu">
+
+
+      </div>
+      <script type="text/javascript" src="vkladka.js"></script>
+      <script type="text/javascript" src="eda.js"></script>
+      <script>
+      function draw_meal(parent, data)
+      {
+        if(data == undefined) return;
+
+        for(var i = 0; i < data.length; i++)
+        {
+          var child = document.createElement("div");
+          var child_content = document.createTextNode(data[i].name.toString());
+
+          child.appendChild(child_content);
+          form.appendChild(child);
+          draw_meal(child, data[i].menu);
+        }
+      }
+
+      var data;
+      var	form	=	document.getElementById("Eda");
+
+      var req = new XMLHttpRequest();
+      req.open("GET", "menu/Mon.json", true);
+      req.addEventListener("load",
+        () =>
+        {
+          console.log(`Done: ${req.status}\n${req.responseText}`);
+          data = JSON.parse(req.responseText);
+          console.log(data);
+          draw_meal(form, data.food_var);
+        });
+      req.send(null);
+
+      </script>
+    </body>
+</html>

@@ -1,0 +1,80 @@
+/*Фоновое изображение элемента body*/
+body{
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  background-image: url("stol1.jpg");
+  background-repeat: no-repeat;
+}
+/*Дизайн  панели выбора столовых*/
+.stols{
+  overflow: hidden;
+  border: 1px solid #185BD8;
+  background-color: #185BD8;
+}
+/*Дизайн кнопок выбора столовой, когда они не Активны*/
+.stols button {
+    background-color:inherit;
+    float:left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+/*Дизайн, когда на кнопку наводят*/
+.stols button:hover {
+    background-color: #0E347C;
+}
+/*Дизайн, когда пользователь нажал/активировал кнопку*/
+.stols button.active {
+    background-color: #0E347C;
+}
+/*отвечает за размеры меню столовой*/
+.buttonStolContent {
+    width: 85vw;
+    height: 85vh;
+    display: none;
+    padding: 6px 12px;
+    border-style: none;
+}
+/*Дизайн меню столовой*/
+.menu{
+  height: inherit;
+  width: inherit;
+  background-color:  #185BD8;
+  overflow: hidden;
+
+}
+/*Цвет кнопокв меню*/
+.menu button {
+
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+/*Цвет когда на кнопку наводят*/
+.menu button:hover {
+    background-color: #0E347C;
+}
+/*Цвет когда кнопка активна*/
+.menu button.active {
+    background-color: #0E347C;
+}
+.eda_drinks{
+  overflow: hidden;
+  background-color: #185BD8;
+
+}
+/*отвечает за то...*/
+.buttonEdaContent {
+    width: inherit;
+    height: 75vh;
+    display: none;
+    padding: 6px 12px;
+    border-style: none;
+  }
