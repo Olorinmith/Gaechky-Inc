@@ -2,10 +2,10 @@
 <html lang="ru" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="page.css">
     <title></title>
   </head>
+
   <body>
 
     <div class="stols">
@@ -14,59 +14,76 @@
         <button class="buttonStolLink" onclick="openStol(event,'Stol3')">Столовая 3</button>
     </div>
 
-      <div id="Stol1" class="buttonStolContent">
+    <div id="Stol1" class="buttonStolContent">
+
         <div class="menu">
-          <div class="eda_drinks">
-            <button class="buttonEdaLink" onclick="openEda(event,'Eda')">Еда</button>
+
+          <div class="selector">
+
+            <button class="buttonEdaDrinkLink" onclick="openEdaDrink(event, 'Eda1')">Еда</button>
+            <button class="buttonEdaDrinkLink" onclick="openEdaDrink(event, 'Drink1')">Напитки</button>
+
           </div>
-          <div id="Eda" class="buttonEdaContent">
-            Еда 1<br>
-            Еда 2
+
+          <div id="Eda1" class="buttonEdaDrinkContent">
+            здесь еда
           </div>
+
+          <div id="Drink1" class="buttonEdaDrinkContent">
+            здесь напитки
+          </div>
+
         </div>
-      </div>
-      <div id="Stol2" class="buttonStolContent">
+    </div>
+
+    <div id="Stol2" class="buttonStolContent">
       <div class="menu">
 
+        <div class="selector">
+
+          <button class="buttonEdaDrinkLink" onclick="openEdaDrink(event, 'Eda2')">Еда</button>
+          <button class="buttonEdaDrinkLink" onclick="openEdaDrink(event, 'Drink2')">Напитки</button>
+
+        </div>
+
+        <div id="Eda2" class="buttonEdaDrinkContent">
+          здесь еда 2
+        </div>
+
+        <div id="Drink2" class="buttonEdaDrinkContent">
+          здесь напитки 2
+        </div>
+
       </div>
-      <div id="Stol3" class="buttonStolContent">
+
+    </div>
+
+    <div id="Stol3" class="buttonStolContent">
       <div class="menu">
 
+        <div class="selector">
+
+          <button class="buttonEdaDrinkLink" onclick="openEdaDrink(event, 'Eda3')">Еда</button>
+          <button class="buttonEdaDrinkLink" onclick="openEdaDrink(event, 'Drink3')">Напитки</button>
+        </div>
+
+        <div id="Eda3" class="buttonEdaDrinkContent">
+          здесь еда 3
+        </div>
+
+        <div id="Drink3" class="buttonEdaDrinkContent">
+          здесь напитки 3
+        </div>
 
       </div>
-      <script type="text/javascript" src="vkladka.js"></script>
-      <script type="text/javascript" src="eda.js"></script>
-      <script>
-      function draw_meal(parent, data)
-      {
-        if(data == undefined) return;
 
-        for(var i = 0; i < data.length; i++)
-        {
-          var child = document.createElement("div");
-          var child_content = document.createTextNode(data[i].name.toString());
+    </div>
 
-          child.appendChild(child_content);
-          form.appendChild(child);
-          draw_meal(child, data[i].menu);
-        }
-      }
+    <div class="basket">
+      Корзина
+    </div>
 
-      var data;
-      var	form	=	document.getElementById("Eda");
-
-      var req = new XMLHttpRequest();
-      req.open("GET", "menu/Mon.json", true);
-      req.addEventListener("load",
-        () =>
-        {
-          console.log(`Done: ${req.status}\n${req.responseText}`);
-          data = JSON.parse(req.responseText);
-          console.log(data);
-          draw_meal(form, data.food_var);
-        });
-      req.send(null);
-
-      </script>
-    </body>
+    <script type="text/javascript" src="vkladka.js"></script>
+    <script type="text/javascript" src="edaDrink.js"></script>
+  </body>
 </html>

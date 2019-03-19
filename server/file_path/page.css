@@ -3,8 +3,9 @@ body{
   height: 100vh;
   width: 100vw;
   margin: 0;
-  background-image: url("stol1.jpg");
-  background-repeat: no-repeat;
+  background-image: url("stol.jpg");
+  background-size: cover;
+  background-repeat: round;
 }
 /*Дизайн  панели выбора столовых*/
 .stols{
@@ -14,9 +15,10 @@ body{
 }
 /*Дизайн кнопок выбора столовой, когда они не Активны*/
 .stols button {
+  width: 33.3%;
     background-color:inherit;
     float:left;
-    border: none;
+    border-style: inset;
     outline: none;
     cursor: pointer;
     padding: 14px 16px;
@@ -30,28 +32,29 @@ body{
 .stols button.active {
     background-color: #0E347C;
 }
-/*отвечает за размеры меню столовой*/
+/*отвечает за размеры меню и дизайн столовой*/
 .buttonStolContent {
-    width: 85vw;
+    width: 70vw;
     height: 85vh;
+    position: fixed;
+    bottom: 3vh;
+    left: 4vw;
+    background-color:  #185BD8;
     display: none;
-    padding: 6px 12px;
     border-style: none;
 }
 /*Дизайн меню столовой*/
 .menu{
-  height: inherit;
   width: inherit;
-  background-color:  #185BD8;
+  height: inherit;
   overflow: hidden;
-
 }
 /*Цвет кнопокв меню*/
 .menu button {
 
   background-color: inherit;
   float: left;
-  border: none;
+  border:inset ;
   outline: none;
   cursor: pointer;
   padding: 14px 16px;
@@ -65,16 +68,31 @@ body{
 .menu button.active {
     background-color: #0E347C;
 }
-.eda_drinks{
-  overflow: hidden;
-  background-color: #185BD8;
-
+/*Блок с кнопками*/
+.selector{
+  height: 7vh;
+  width: inherit;
 }
-/*отвечает за то...*/
-.buttonEdaContent {
-    width: inherit;
-    height: 75vh;
-    display: none;
-    padding: 6px 12px;
-    border-style: none;
-  }
+/*Длина кнопок*/
+.buttonEdaDrinkLink{
+  width: 50%;
+}
+/*То что внутри кнопок (Еда или Напитки)*/
+.buttonEdaDrinkContent{
+  width: inherit;
+  height: inherit;
+  display: none;
+  border-style: none;
+}
+/*Корзина*/
+.basket{
+    width: 15vw;
+    height: 30vh;
+    position: fixed;
+    left: 78vw;
+    top: 10.9vh;
+    background-color: #6395F2;
+    font-family: sans-serif;
+    font-size: 3.5vh;
+    text-align: center;
+}
